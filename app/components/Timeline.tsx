@@ -51,10 +51,8 @@ const Timeline = () => {
       jobType: "Intership",
       duration: "Jan 2021 - April 2021",
       stuffIDid: [
-        "Integrated Microsoft OneDrive and Amazon S3 into a Salesforce Lightning Web Component (LWC) application",
-        "Developed test cases achieving over 90% code coverage and implemented debugging strategies for performance improvements",
-        "Collaborated with cross-functional teams in an Agile development environment",
-        "Developed secure authentication and efficient data transfer mechanisms for file management",
+        "Developed frontend modules using Angular, improving overall user engagement",
+        "Assisted in optimizing Python-Django database queries for enhanced application performance",
       ],
     },
   ];
