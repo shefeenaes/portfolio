@@ -1,0 +1,14 @@
+.timeline ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: 0.9rem;
+  position: relative;
+}
+
+.timeline ul li::before {
+  content: "▸ ";
+  position: absolute;
+  left: 0;
+  color: #ffffff60;
+}

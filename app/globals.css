@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -24,4 +25,10 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* styles/globals.css */
+.mask {
+  transform-origin: right center;
+  will-change: transform;
 }

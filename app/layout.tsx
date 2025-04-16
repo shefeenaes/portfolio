@@ -25,6 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* <head>
+      <link
+          rel="stylesheet"
+          href="https://unpkg.com/locomotive-scroll@latest/dist/locomotive-scroll.css"
+        />
+      </head> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
