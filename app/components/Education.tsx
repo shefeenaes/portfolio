@@ -53,7 +53,7 @@ const Education = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  });
 
   return (
     <section
@@ -75,12 +75,12 @@ const Education = () => {
         <div className="w-1/2 pr-14">
           <div
             ref={rightRef}
-            className="flex flex-col gap-32 transition-transform"
+            className="flex flex-col gap-10 transition-transform "
           >
             {courses.map((c, index) => (
               <div
                 key={index}
-                className="course-slide h-screen flex flex-col justify-center"
+                className="course-slide h-screen flex flex-col justify-center bg-gradient-to-r from-black to-gray-900 m-2 p-4"
               >
                 <h2 className="text-3xl lg:text-4xl font-semibold uppercase text-blue-300 mb-2">
                   {c.course}
