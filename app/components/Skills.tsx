@@ -2,6 +2,7 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import FeatureCard from "./FeatureCard";
 
 const Skills = () => {
   const sectionRef = useRef(null);
@@ -24,55 +25,31 @@ const Skills = () => {
         },
       }
     );
+
     return () => {
       pin.kill();
     };
   }, []);
 
-  const cards = [
-    {
-      title: "Next.js",
-      description: "React framework for production.",
-    },
-    {
-      title: "React",
-      description: "Library for building UIs.",
-    },
-    {
-      title: "TypeScript",
-      description: "JavaScript with types.",
-    },
-    {
-      title: "TailwindCSS",
-      description: "Utility-first CSS framework.",
-    },
-  ];
-
   return (
     <section className="overflow-hidden bg-gradient-to-r from-black to-gray-900">
-      <div ref={triggerRef} className="h-[100vh] relative">
-        <div ref={sectionRef} className="flex h-[100vh] w-[400vw] text-white">
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-center h-[100vh] w-[100vw]"
-            >
-              {/* Glowing Card */}
-              <div className="group perspective w-[60vw] max-w-[500px] h-[50vh] relative animate-glow">
-                <div className="relative w-full h-full duration-700 transform-style-3d group-hover:rotate-y-180">
-                  {/* Front Side */}
-                  <div className="absolute w-full h-full bg-black rounded-xl shadow-lg flex items-center justify-center text-3xl font-semibold text-white text-center backface-hidden">
-                    {card.title}
-                  </div>
-
-                  {/* Back Side */}
-                  <div className="absolute w-full h-full bg-gray-800 rounded-xl shadow-lg flex items-center justify-center text-lg p-4 text-white text-center rotate-y-180 backface-hidden">
-                    {card.description}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+      <div
+        ref={triggerRef}
+        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8  "
+      >
+        <div className="mx-auto max-w-xl mt-5 text-center">
+          <h2 className=" text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 from-10% via-violet-500 via-30% to-sky-500 to-90%">
+            Skills & Services
+          </h2>
+          <p className="mt-4 text-base leading-relaxed ">
+            These are my working Skills & Services I have done.
+          </p>
+        </div>
+        <div
+          ref={sectionRef}
+          className="mt-32 w-max max-h-96 flex gap-8 sm:gap-12 px-6  lg:px-0  text-center overflow-x-auto"
+        >
+          <FeatureCard />
         </div>
       </div>
     </section>

@@ -1,15 +1,20 @@
 "use client";
 import LocomotiveScroll from "locomotive-scroll";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-
+import BackgroundForHero from "./backgroundForHero";
+import { useTheme } from "next-themes";
 export default function Intro() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const boxRef = useRef<HTMLDivElement | null>(null);
   const ImageRef = useRef<HTMLDivElement | null>(null);
   const timeline = useRef<gsap.core.Timeline | null>(null);
-
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   useEffect(() => {
     let locomotiveScroll: LocomotiveScroll | null = null;
 
@@ -38,7 +43,6 @@ export default function Intro() {
             ease: "linear",
           });
       }
-
       const handleProgressEvent = (e: CustomEvent) => {
         const { progress } = e.detail;
         if (timeline.current) {
@@ -60,7 +64,6 @@ export default function Intro() {
       };
     }
   }, []);
-
   return (
     <main data-scroll-container ref={scrollRef}>
       <div
@@ -69,45 +72,47 @@ export default function Intro() {
         data-scroll-offset="0,100%"
         data-scroll-event-progress="progressEvent"
       >
-        <div className="relative w-full min-h-[100vh]">
+        {mounted && (
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="p-2 rounded border"
+          >
+            Toggle {theme === "dark" ? "Light" : "Dark"} Mode
+          </button>
+        )}
+        <div className="relative w-full">
           <div
-            className="absolute top-0 left-0 inset-0 h-full w-full brightness-[0.4]"
+            className="absolute top-0 left-0 inset-0 h-full w-full brightness-[0.5]"
             ref={boxRef}
           >
-            <Image
-              src="/intro-1.jpg"
-              fill={true}
-              alt="background image"
-              priority={true}
-              className="object-cover"
-            />
+            <BackgroundForHero />
           </div>
-
-          <div className="relative z-20 flex items-center justify-center min-h-screen">
+          <div className="relative z-20 flex flex-col lg:flex-row items-center justify-center min-h-screen gap-8 px-4 md:px-6">
             <div
-              className="w-[350px] h-[475px] brightness-[0.8]"
+              className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg aspect-[3/4] brightness-[0.8]"
               ref={ImageRef}
             >
               <Image
-                src="/mypic.jpg"
+                src="/mypic.png"
                 alt="intro image"
-                fill={true}
-                priority={true}
-                className="object-cover object-top"
+                fill
+                priority
+                className="object-cover object-top "
               />
             </div>
-            <div className="flex-col text-center justify-center">
+
+            <div className="flex flex-col items-center justify-center text-center">
               <h1
                 data-scroll
                 data-scroll-speed="0.7"
-                className="text-white text-[7vw] z-10 whitespace-nowrap"
+                className=" text-[10vw] md:text-[5vw] z-10 font-extrabold"
               >
                 SHEFEENA E S
               </h1>
               <h2
                 data-scroll
                 data-scroll-speed="0.7"
-                className=" font-bold tracking-[clamp(0.6rem,0.75vh,1.3rem)]"
+                className=" font-bold tracking-[clamp(0.6rem,0.75vh,1.3rem)] text-sm sm:text-base md:text-lg mt-2"
               >
                 FRONT END DEVELOPER
               </h2>
