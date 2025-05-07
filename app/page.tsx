@@ -4,6 +4,7 @@ import Skills from "./components/Skills";
 import Education from "./components/Education";
 import Timeline from "./components/Timeline";
 import Contact from "./components/Contact";
+import EducationSection from "./components/Education";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
       <About />
       <Skills />
       <Timeline />
-      <Education />
+      <EducationSection />
       <Contact />
     </>
   );
