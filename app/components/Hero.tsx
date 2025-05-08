@@ -3,7 +3,7 @@ import LocomotiveScroll from "locomotive-scroll";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import BackgroundForHero from "./backgroundForHero";
+import BackgroundForHero from "./ui/backgroundForHero";
 import { useTheme } from "next-themes";
 export default function Intro() {
   const scrollRef = useRef<HTMLDivElement | null>(null);

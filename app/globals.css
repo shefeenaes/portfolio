@@ -10,6 +10,15 @@ html {
 html.dark {
   @apply bg-[#1E1E1E] text-[#FDFDFD];
 }
+:root {
+  --text-start-color: #888888; /* starting faded grey */
+  --text-end-color: #1a1a1a; /* dark readable text */
+}
+
+.dark {
+  --text-start-color: #555555;
+  --text-end-color: #ffffff; /* light text on dark bg */
+}
 
 body {
   font-family: Arial, Helvetica, sans-serif;

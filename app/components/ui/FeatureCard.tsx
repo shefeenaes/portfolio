@@ -1,10 +1,10 @@
 "use client";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { BorderBeam } from "./ui/border-beam";
-import { MagicCard } from "./ui/magic-card";
+import { BorderBeam } from "./border-beam";
+import { MagicCard } from "./magic-card";
 import Image from "next/image";
-import { FeatureCardJSON } from "./FeatureCardJSON";
+import { FeatureCardJSON } from "../../data/FeatureCardJSON";
 
 const FeatureCard = () => {
   const { theme, resolvedTheme } = useTheme();

@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Header from "./ui/Header";
 
 // Timeline Data
 const timeline = [
@@ -54,12 +55,12 @@ const Timeline = () => {
       className="min-h-screen flex flex-col items-center justify-center overflow-hidden relative"
     >
       {/* Ambient glow effects - matches Home.jsx */}
-      <div className="fixed top-1/3 left-1/4 w-64 h-64 rounded-full bg-purple-500 opacity-10 blur-3xl"></div>
-      <div className="fixed bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-orange-500 opacity-10 blur-3xl"></div>
+      {/* <div className="fixed top-1/3 left-1/4 w-64 h-64 rounded-full bg-purple-500 opacity-10 blur-3xl"></div>
+      <div className="fixed bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-orange-500 opacity-10 blur-3xl"></div> */}
 
       <div className="w-full max-w-6xl mt-10 mx-auto px-4 md:px-8 py-16 z-10">
         {/* Title with animated glow - updated to match Home.jsx text style */}
-        <motion.h1
+        {/* <motion.h1
           className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#6EE7B7] via-[#3B82F6] to-[#9333EA] mb-12 text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,7 +71,8 @@ const Timeline = () => {
           }}
         >
           My Career Timeline
-        </motion.h1>
+        </motion.h1> */}
+        <Header title="experience" />
 
         <div className="relative w-full max-w-4xl mx-auto">
           {/* Timeline vertical line with animated gradient */}

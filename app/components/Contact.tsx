@@ -15,6 +15,7 @@ import {
   MapPinIcon,
   SendIcon,
 } from "lucide-react";
+import Header from "./ui/Header";
 
 const Contact: React.FC = () => {
   const [fullName, setFullName] = useState<string>("");
@@ -123,12 +124,11 @@ const Contact: React.FC = () => {
     };
 
   return (
-    <section className="min-h-screen py-10 px-4 flex flex-col items-center bg-gray-50 dark:bg-gray-900">
+    <section className="min-h-screen py-10 px-4 flex flex-col items-center ">
+      {/* <section className="min-h-screen py-10 px-4 flex flex-col items-center bg-gray-50 dark:bg-gray-900"></section> */}
       <ToastContainer />
-      <h1 className="text-4xl font-bold mb-10 text-center text-gray-800 dark:text-gray-100">
-        Contact Me
-      </h1>
-
+      {/* <h1 className="text-4xl font-bold mb-10 text-center">Contact Me</h1> */}
+      <Header title="contact" />
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Contact Info */}
         <motion.div
