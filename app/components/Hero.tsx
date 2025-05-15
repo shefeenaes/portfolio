@@ -7,6 +7,7 @@ import Gridbg from "./ui/Grid-bg";
 import { useTheme } from "next-themes";
 import { Sacramento, Montserrat } from "next/font/google";
 import { SparklesCore } from "./ui/Sparkles";
+
 const sacramento = Sacramento({
   subsets: ["latin"],
   weight: "400",
@@ -15,6 +16,7 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
+
 export default function Intro() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const boxRef = useRef<HTMLDivElement | null>(null);
@@ -22,9 +24,11 @@ export default function Intro() {
   const timeline = useRef<gsap.core.Timeline | null>(null);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
     setMounted(true);
   }, []);
+
   useEffect(() => {
     let locomotiveScroll: LocomotiveScroll | null = null;
 
@@ -36,23 +40,17 @@ export default function Intro() {
         smoothMobile: true,
       } as any);
 
-      // GSAP Timeline for the Intro animations
-      if (boxRef.current && ImageRef.current) {
+      // GSAP Timeline for animations on boxRef (sparkles) only
+      if (boxRef.current) {
         timeline.current = gsap.timeline({ paused: true });
 
-        timeline.current
-          .to(ImageRef.current, {
-            opacity: 0,
-            y: -100,
-            duration: 3,
-            ease: "linear",
-          })
-          .to(boxRef.current, {
-            scale: 0.1,
-            duration: 5,
-            ease: "linear",
-          });
+        timeline.current.to(boxRef.current, {
+          scale: 0.1,
+          duration: 5,
+          ease: "linear",
+        });
       }
+
       const handleProgressEvent = (e: CustomEvent) => {
         const { progress } = e.detail;
         if (timeline.current) {
@@ -74,6 +72,7 @@ export default function Intro() {
       };
     }
   }, []);
+
   return (
     <main data-scroll-container ref={scrollRef}>
       <div
@@ -106,49 +105,29 @@ export default function Intro() {
             />
           </div>
           <div className="relative z-20 flex flex-col lg:flex-row items-center justify-center min-h-screen gap-1 px-2">
+            {/* Image with parallax effect on all screens */}
             <div
               className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg aspect-[3/4] brightness-[0.8]"
               ref={ImageRef}
+              data-scroll
+              data-scroll-speed="0.7"
             >
               <Image
                 src="/mypic.png"
                 alt="intro image"
                 fill
                 priority
-                className="object-cover object-top "
+                className="object-cover object-top"
               />
             </div>
-            <div className="relative w-full flex flex-col items-center justify-center text-center ">
-              {/* Background Image */}
-              {/* <div
-                className="absolute inset-0 w-full h-full  overflow-hidden  z-10"
-                data-scroll
-                data-scroll-speed="0.7"
-              >
-                {/* Light theme image */}
-              {/* <Image
-                  src="/text-bg.jpg"
-                  alt="Cloud Background Light"
-                  className="absolute w-full h-full object-contain  dark:hidden"
-                  fill
-                  priority
-                />
-                {/* Dark theme image */}
-              {/* <Image
-                  src="/text-bg.jpg"
-                  alt="Cloud Background Dark"
-                  className="absolute w-full h-full object-contain  hidden dark:block"
-                  fill
-                  priority
-                />
-              </div>   */}
 
-              {/* Text Content */}
+            {/* Texts with parallax effect */}
+            <div className="relative w-full flex flex-col items-center justify-center text-center ">
               <div className="relative z-10">
                 <h1
                   data-scroll
                   data-scroll-speed="0.7"
-                  className={`${sacramento.className}  text-[10vw] md:text-[5vw] font-extrabold`}
+                  className={`${sacramento.className} text-[10vw] md:text-[5vw] font-extrabold`}
                 >
                   Hello! I&apos;m
                 </h1>

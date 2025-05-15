@@ -5,19 +5,24 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import Header from "./ui/Header";
 import { SparklesCore } from "./ui/Sparkles";
 import Gridbg from "./ui/Grid-bg";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
-  const h3Ref = useRef(null);
+  const h3Ref = useRef<HTMLHeadingElement | null>(null);
+  const splitRef = useRef<SplitType | null>(null);
 
   useEffect(() => {
     if (!h3Ref.current) return;
 
-    const splitText = new SplitType(h3Ref.current, { types: "words" });
+    // Initialize SplitType
+    splitRef.current = new SplitType(h3Ref.current, { types: "words" });
 
+    // Create GSAP timeline
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: h3Ref.current,
@@ -28,7 +33,7 @@ const About = () => {
     });
 
     tl.fromTo(
-      splitText.words,
+      splitRef.current.words,
       {
         opacity: 0.1,
         y: 20,
@@ -44,16 +49,18 @@ const About = () => {
       }
     );
 
+    // Cleanup
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      splitText.revert();
+      tl.kill();
+      ScrollTrigger.getById("about-animation")?.kill();
+      splitRef.current?.revert();
     };
   }, []);
 
   return (
     <section
       id="about"
-      className="relative flex flex-col items-center justify-center text-center overflow-hidden min-h-screen  transition-colors duration-500"
+      className="relative flex flex-col items-center justify-center text-center overflow-hidden min-h-screen transition-colors duration-500"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -62,13 +69,11 @@ const About = () => {
         className="z-10 w-full flex flex-col items-center justify-center"
       >
         <Header title="about" />
-        <div className="mt-10 min-h-[60vh] px-8 md:px-4 max-w-4xl">
+
+        <div className="mt-10 min-h-[60vh] px-6 md:px-4 max-w-4xl">
           <h3
             ref={h3Ref}
-            className="text-xl md:text-2xl font-semibold tracking-wide transition-colors duration-300  "
-            style={{
-              textShadow: "0 0 10px rgba(0,0,0,0.1)",
-            }}
+            className="text-xl md:text-2xl font-semibold tracking-wide text-shadow-sm transition-colors duration-300"
           >
             I am a full-stack web developer with a passion for creating
             interactive and responsive web applications.

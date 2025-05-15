@@ -27,9 +27,6 @@ const Timeline = () => {
       <div className="absolute top-0 left-0 inset-0 h-full w-full brightness-[0.5] z-0">
         <Gridbg />
       </div>
-      {/* Ambient glow effects - matches Home.jsx */}
-      {/* <div className="fixed top-1/3 left-1/4 w-64 h-64 rounded-full bg-purple-500 opacity-10 blur-3xl"></div>
-      <div className="fixed bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-orange-500 opacity-10 blur-3xl"></div> */}
 
       <div className="w-full max-w-6xl mt-10 mx-auto px-4 md:px-8 py-16 z-10">
         {/* Title with animated glow - updated to match Home.jsx text style */}
