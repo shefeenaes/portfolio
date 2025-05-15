@@ -3,8 +3,18 @@ import LocomotiveScroll from "locomotive-scroll";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import BackgroundForHero from "./backgroundForHero";
+import Gridbg from "./ui/Grid-bg";
 import { useTheme } from "next-themes";
+import { Sacramento, Montserrat } from "next/font/google";
+import { SparklesCore } from "./ui/Sparkles";
+const sacramento = Sacramento({
+  subsets: ["latin"],
+  weight: "400",
+});
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
 export default function Intro() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const boxRef = useRef<HTMLDivElement | null>(null);
@@ -85,9 +95,17 @@ export default function Intro() {
             className="absolute top-0 left-0 inset-0 h-full w-full brightness-[0.5]"
             ref={boxRef}
           >
-            <BackgroundForHero />
+            <SparklesCore
+              id="tsparticlesfullpage"
+              background="transparent"
+              minSize={0.6}
+              maxSize={1.4}
+              particleDensity={100}
+              className="w-full h-full"
+              particleColor="#6366f1"
+            />
           </div>
-          <div className="relative z-20 flex flex-col lg:flex-row items-center justify-center min-h-screen gap-8 px-4 md:px-6">
+          <div className="relative z-20 flex flex-col lg:flex-row items-center justify-center min-h-screen gap-1 px-2">
             <div
               className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg aspect-[3/4] brightness-[0.8]"
               ref={ImageRef}
@@ -100,22 +118,55 @@ export default function Intro() {
                 className="object-cover object-top "
               />
             </div>
+            <div className="relative w-full flex flex-col items-center justify-center text-center ">
+              {/* Background Image */}
+              {/* <div
+                className="absolute inset-0 w-full h-full  overflow-hidden  z-10"
+                data-scroll
+                data-scroll-speed="0.7"
+              >
+                {/* Light theme image */}
+              {/* <Image
+                  src="/text-bg.jpg"
+                  alt="Cloud Background Light"
+                  className="absolute w-full h-full object-contain  dark:hidden"
+                  fill
+                  priority
+                />
+                {/* Dark theme image */}
+              {/* <Image
+                  src="/text-bg.jpg"
+                  alt="Cloud Background Dark"
+                  className="absolute w-full h-full object-contain  hidden dark:block"
+                  fill
+                  priority
+                />
+              </div>   */}
 
-            <div className="flex flex-col items-center justify-center text-center">
-              <h1
-                data-scroll
-                data-scroll-speed="0.7"
-                className=" text-[10vw] md:text-[5vw] z-10 font-extrabold"
-              >
-                SHEFEENA E S
-              </h1>
-              <h2
-                data-scroll
-                data-scroll-speed="0.7"
-                className=" font-bold tracking-[clamp(0.6rem,0.75vh,1.3rem)] text-sm sm:text-base md:text-lg mt-2"
-              >
-                FRONT END DEVELOPER
-              </h2>
+              {/* Text Content */}
+              <div className="relative z-10">
+                <h1
+                  data-scroll
+                  data-scroll-speed="0.7"
+                  className={`${sacramento.className}  text-[10vw] md:text-[5vw] font-extrabold`}
+                >
+                  Hello! I&apos;m
+                </h1>
+                <h1
+                  data-scroll
+                  data-scroll-speed="0.7"
+                  className="text-[10vw] md:text-[5vw]"
+                >
+                  SHEFEENA E S
+                </h1>
+                <h2
+                  data-scroll
+                  data-scroll-speed="0.7"
+                  className={`${montserrat.className} font-bold tracking-[clamp(0.6rem,0.75vh,1.3rem)] text-sm sm:text-base md:text-lg`}
+                >
+                  FRONT END DEVELOPER
+                </h2>
+              </div>
             </div>
           </div>
         </div>

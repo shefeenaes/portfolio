@@ -58,7 +58,7 @@ export default function TimelineItem({
               {company} | {jobType}
             </p>
           </div>
-          <p className="text-base sm:text-lg text-white/60 my-3">{duration}</p>
+          <p className="text-base sm:text-lg  my-3">{duration}</p>
 
           <ul>
             {stuffIDid.map((stuff, index) => (

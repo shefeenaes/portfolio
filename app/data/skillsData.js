@@ -1,4 +1,4 @@
-export const FeatureCardJSON = [
+export const skills = [
   {
     title: "React.js",
     description: "React.js for Frontend and User-Interface Development.",
@@ -38,7 +38,8 @@ export const FeatureCardJSON = [
   },
   {
     title: "TailwindCSS ",
-    description: "TailwindCSS is a utility-first CSS framework.",
+    description:
+      "TailwindCSS is a utility-first CSS framework. It's fast and flexible with zero-runtime.",
     imageLink:
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
   },

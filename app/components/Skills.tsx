@@ -2,8 +2,10 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import FeatureCard from "./FeatureCard";
+import FeatureCard from "./ui/FeatureCard";
+import Header from "./ui/Header";
 
+import Raining from "./ui/skillsRainingbg";
 const Skills = () => {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
@@ -32,22 +34,23 @@ const Skills = () => {
   }, []);
 
   return (
-    <section className="overflow-hidden bg-gradient-to-r from-black to-gray-900">
+    <section className="overflow-hidden ">
+      {/* <section className="overflow-hidden bg-gradient-to-r from-black to-gray-900"></section> */}
       <div
         ref={triggerRef}
-        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8  "
+        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative"
       >
-        <div className="mx-auto max-w-xl mt-5 text-center">
-          <h2 className=" text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 from-10% via-violet-500 via-30% to-sky-500 to-90%">
-            Skills & Services
-          </h2>
-          <p className="mt-4 text-base leading-relaxed ">
-            These are my working Skills & Services I have done.
-          </p>
+        <div className="absolute top-0 left-0 inset-0 h-full w-full brightness-[0.5] z-0">
+          <Raining />
         </div>
+
+        <div className="sticky top-10 z-10">
+          <Header title="skills" />
+        </div>
+
         <div
           ref={sectionRef}
-          className="mt-32 w-max max-h-96 flex gap-8 sm:gap-12 px-6  lg:px-0  text-center overflow-x-auto"
+          className="mt-32 w-max flex gap-8 sm:gap-12 px-6 lg:px-0 text-center overflow-x-auto"
         >
           <FeatureCard />
         </div>
