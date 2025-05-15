@@ -68,7 +68,7 @@ const BackgroundForHero: React.FC = () => {
 
   return (
     <div
-      className="absolute inset-0 w-full h-full z-[-1] pointer-events-none"
+      className="absolute inset-0 w-full h-full z-[-1] pointer-events-none opacity-20"
       aria-hidden="true"
     >
       <svg

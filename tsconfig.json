@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/components/Education.jsx"
+    "app/components/Education.jsx",
+    "app/data/skillsData.js"
   ],
   "exclude": ["node_modules"]
 }

@@ -6,6 +6,8 @@ import gsap from "gsap";
 import SplitType from "split-type";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "./ui/Header";
+import { SparklesCore } from "./ui/Sparkles";
+import Gridbg from "./ui/Grid-bg";
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
@@ -16,7 +18,7 @@ const About = () => {
 
     const splitText = new SplitType(h3Ref.current, { types: "words" });
 
-    const animation = gsap.timeline({
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: h3Ref.current,
         start: "top 90%",
@@ -25,30 +27,33 @@ const About = () => {
       },
     });
 
-    animation.fromTo(
+    tl.fromTo(
       splitText.words,
       {
         opacity: 0.1,
+        y: 20,
         color: "var(--text-start-color)",
       },
       {
         opacity: 1,
+        y: 0,
         color: "var(--text-end-color)",
-        stagger: 0.08,
-        duration: 1,
+        stagger: 0.12,
+        duration: 2,
+        ease: "power2.out",
       }
     );
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      splitText.revert(); // Clean up SplitType
+      splitText.revert();
     };
   }, []);
 
   return (
     <section
       id="about"
-      className="relative flex flex-col items-center justify-center text-center overflow-hidden min-h-screen"
+      className="relative flex flex-col items-center justify-center text-center overflow-hidden min-h-screen  transition-colors duration-500"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -57,13 +62,12 @@ const About = () => {
         className="z-10 w-full flex flex-col items-center justify-center"
       >
         <Header title="about" />
-        <div className="mt-10 min-h-[60vh] px-4 md:px-0">
+        <div className="mt-10 min-h-[60vh] px-8 md:px-4 max-w-4xl">
           <h3
             ref={h3Ref}
-            className="text-xl md:text-4xl font-bold tracking-wide transition-colors duration-300"
+            className="text-xl md:text-2xl font-semibold tracking-wide transition-colors duration-300  "
             style={{
-              color: "var(--text-start-color)",
-              textShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
+              textShadow: "0 0 10px rgba(0,0,0,0.1)",
             }}
           >
             I am a full-stack web developer with a passion for creating

@@ -5,7 +5,7 @@ import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
-import { LuLinkedin, LuInstagram, LuGithub } from "react-icons/lu";
+import { contact } from "../data/contact";
 import {
   MailIcon,
   UserIcon,
@@ -43,27 +43,7 @@ const Contact: React.FC = () => {
       },
     },
   };
-  const contact = {
-    email: "ucefsahih@gmail.com",
-    tel: "+212708978739",
-    social: [
-      {
-        name: "GitHub",
-        url: "https://github.com/ysahih",
-        icon: LuGithub,
-      },
-      {
-        name: "LinkedIn",
-        url: "https://www.linkedin.com/in/youssef-sahih/",
-        icon: LuLinkedin,
-      },
-      {
-        name: "Instagram",
-        url: "https://x.com/uc3f02",
-        icon: LuInstagram,
-      },
-    ],
-  };
+
   const handleSendEmail = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setLoading(true);

@@ -31,7 +31,10 @@ const config: Config = {
             "offset-distance": "100%",
           },
         },
-
+        cloudLoop: {
+          "0%": { transform: "translate3d(0, 0, 0)" },
+          "100%": { transform: "translate3d(-50%, 0, 0)" },
+        },
         meteor: {
           "0%": {
             transform: "rotate(215deg) translateX(0)",
@@ -48,6 +51,7 @@ const config: Config = {
       },
       animation: {
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+        cloudLoop: "cloudLoop 80s linear infinite",
       },
     },
   },

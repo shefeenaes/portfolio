@@ -1,4 +1,15 @@
 import React from "react";
+import { Sacramento, Montserrat } from "next/font/google";
+
+const sacramento = Sacramento({
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
 
 interface TitleProps {
   title: string;
@@ -7,11 +18,11 @@ interface TitleProps {
 const Header: React.FC<TitleProps> = ({ title }) => {
   const titleMap: Record<string, { code: string; desc: string }> = {
     about: {
-      code: 'console.log(" ABOUT ME ")',
+      code: 'console.log(" About Me ")',
       desc: "A Little Bit About Me",
     },
     experience: {
-      code: 'print(" MY EXPERTISE ")',
+      code: 'print(" My Expertise ")',
       desc: "I've been doing web development for about 3 years now, and I'm always eager to learn more in this fast-paced industry.",
     },
     education: {
@@ -34,11 +45,15 @@ const Header: React.FC<TitleProps> = ({ title }) => {
   };
 
   return (
-    <div className="mx-auto max-w-xl mt-5 text-center">
-      <h2 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 via-violet-500 to-sky-500">
+    <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center mt-5">
+      <h2
+        className={`${sacramento.className} text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 via-violet-500 to-sky-500`}
+      >
         {current.code}
       </h2>
-      <p className="mt-4 text-base leading-relaxed text-white">
+      <p
+        className={`${montserrat.className} mt-4 text-sm sm:text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300`}
+      >
         {current.desc}
       </p>
     </div>

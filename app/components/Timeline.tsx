@@ -4,38 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Header from "./ui/Header";
 
-// Timeline Data
-const timeline = [
-  {
-    year: "Nov 2024 - March 2025",
-    title: "Frontend Engineer",
-    company: "Trycle",
-    desc: "Led the development of a dynamic HR request approval system using React.js, Next.js, Zustand, and Tailwind CSS, translating Figma designs into responsive UIs, integrating APIs, and deploying via Vercel with CI/CD support.",
-    iconPath: "/trycle.PNG",
-  },
-  {
-    year: "July 2023 - Dec 2023",
-    title: "Software Engineer",
-    company: "kitaab.ai",
-    desc: "In my first offline job, I enhanced a fintech website by building and maintaining responsive UI components using Next.js, TypeScript, and Material-UI, while resolving bugs and optimizing performance",
-    iconPath: "/kitaab.PNG",
-  },
-  {
-    year: "July 2021 - Dec 2022",
-    title: "Associate Software Engineer",
-    company: "CloudVandana Solutions",
-    desc: "In my first official role, I developed secure file management features by integrating OneDrive and S3 into a Salesforce LWC app, ensured 90%+ test coverage, and collaborated in an Agile team to enhance performance and security.",
-    iconPath: "/cloudvandana.PNG",
-  },
-  {
-    year: "Jan 2021 - April 2021",
-    title: "Internship Trainee",
-    company: "Exlygenze Senseworks Private Limited",
-    desc: "Developed a customer complaint management system using React and Python Django as part of my college internship project.",
-    iconPath: "/espl.PNG",
-  },
-];
-
+import { timeline } from "../data/timeline";
+import Gridbg from "./ui/Grid-bg";
 const Timeline = () => {
   // For parallax effect on scroll
   const [scrollY, setScrollY] = useState(0);
@@ -54,6 +24,9 @@ const Timeline = () => {
       id="about"
       className="min-h-screen flex flex-col items-center justify-center overflow-hidden relative"
     >
+      <div className="absolute top-0 left-0 inset-0 h-full w-full brightness-[0.5] z-0">
+        <Gridbg />
+      </div>
       {/* Ambient glow effects - matches Home.jsx */}
       {/* <div className="fixed top-1/3 left-1/4 w-64 h-64 rounded-full bg-purple-500 opacity-10 blur-3xl"></div>
       <div className="fixed bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-orange-500 opacity-10 blur-3xl"></div> */}
@@ -158,7 +131,7 @@ const Timeline = () => {
                 } w-4/5 md:w-5/12 mt-4 md:mt-0`}
               >
                 <motion.div
-                  className="relative p-6 rounded-lg bg-white/70 dark:bg-black/60 backdrop-blur-md border border-cyan-400/30 dark:border-cyan-800/50"
+                  className="relative overflow-hidden p-6 rounded-lg bg-white/70 dark:bg-black/60 backdrop-blur-md border border-cyan-400/30 dark:border-cyan-800/50"
                   whileHover={{
                     scale: 1.03,
                     boxShadow: "0 0 20px rgba(59, 130, 246, 0.2)",
@@ -175,7 +148,7 @@ const Timeline = () => {
                   <p className="text-sm italic text-blue-300 mb-2">
                     {event.year}
                   </p>
-                  <p className="text-gray-300">{event.desc}</p>
+                  <p className="">{event.desc}</p>
 
                   {/* Glitch effect on hover */}
                   <motion.div
