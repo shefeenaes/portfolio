@@ -3,11 +3,12 @@ import LocomotiveScroll from "locomotive-scroll";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Gridbg from "./ui/Grid-bg";
+
 import { useTheme } from "next-themes";
 import { Sacramento, Montserrat } from "next/font/google";
 import { SparklesCore } from "./ui/Sparkles";
-
+import { MdOutlineLightMode } from "react-icons/md";
+import { MdDarkMode } from "react-icons/md";
 const sacramento = Sacramento({
   subsets: ["latin"],
   weight: "400",
@@ -16,7 +17,6 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
-
 export default function Intro() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const boxRef = useRef<HTMLDivElement | null>(null);
@@ -24,11 +24,9 @@ export default function Intro() {
   const timeline = useRef<gsap.core.Timeline | null>(null);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
     setMounted(true);
   }, []);
-
   useEffect(() => {
     let locomotiveScroll: LocomotiveScroll | null = null;
 
@@ -40,17 +38,23 @@ export default function Intro() {
         smoothMobile: true,
       } as any);
 
-      // GSAP Timeline for animations on boxRef (sparkles) only
-      if (boxRef.current) {
+      // GSAP Timeline for the Intro animations
+      if (boxRef.current && ImageRef.current) {
         timeline.current = gsap.timeline({ paused: true });
 
-        timeline.current.to(boxRef.current, {
-          scale: 0.1,
-          duration: 5,
-          ease: "linear",
-        });
+        timeline.current
+          .to(ImageRef.current, {
+            opacity: 0,
+            y: -100,
+            duration: 3,
+            ease: "linear",
+          })
+          .to(boxRef.current, {
+            scale: 0.1,
+            duration: 5,
+            ease: "linear",
+          });
       }
-
       const handleProgressEvent = (e: CustomEvent) => {
         const { progress } = e.detail;
         if (timeline.current) {
@@ -72,7 +76,6 @@ export default function Intro() {
       };
     }
   }, []);
-
   return (
     <main data-scroll-container ref={scrollRef}>
       <div
@@ -82,12 +85,14 @@ export default function Intro() {
         data-scroll-event-progress="progressEvent"
       >
         {mounted && (
-          <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 rounded border"
-          >
-            Toggle {theme === "dark" ? "Light" : "Dark"} Mode
-          </button>
+          <>
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 shadow-2xl border rounded-full"
+            >
+              {theme === "dark" ? <MdDarkMode /> : <MdOutlineLightMode />}{" "}
+            </button>
+          </>
         )}
         <div className="relative w-full">
           <div
@@ -104,48 +109,42 @@ export default function Intro() {
               particleColor="#6366f1"
             />
           </div>
-          <div className="relative z-20 flex flex-col lg:flex-row items-center justify-center min-h-screen gap-1 px-2">
-            {/* Image with parallax effect on all screens */}
+          <div className="relative z-20 flex flex-col lg:flex-row items-center justify-center min-h-screen gap-8 px-4 md:px-6">
             <div
               className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg aspect-[3/4] brightness-[0.8]"
               ref={ImageRef}
-              data-scroll
-              data-scroll-speed="0.7"
             >
               <Image
                 src="/mypic.png"
                 alt="intro image"
                 fill
                 priority
-                className="object-cover object-top"
+                className="object-cover object-top "
               />
             </div>
 
-            {/* Texts with parallax effect */}
-            <div className="relative w-full flex flex-col items-center justify-center text-center ">
-              <div className="relative z-10">
-                <h1
-                  data-scroll
-                  data-scroll-speed="0.7"
-                  className={`${sacramento.className} text-[10vw] md:text-[5vw] font-extrabold`}
-                >
-                  Hello! I&apos;m
-                </h1>
-                <h1
-                  data-scroll
-                  data-scroll-speed="0.7"
-                  className="text-[10vw] md:text-[5vw]"
-                >
-                  SHEFEENA E S
-                </h1>
-                <h2
-                  data-scroll
-                  data-scroll-speed="0.7"
-                  className={`${montserrat.className} font-bold tracking-[clamp(0.6rem,0.75vh,1.3rem)] text-sm sm:text-base md:text-lg`}
-                >
-                  FRONT END DEVELOPER
-                </h2>
-              </div>
+            <div className="flex flex-col items-center justify-center text-center">
+              <h1
+                data-scroll
+                data-scroll-speed="0.7"
+                className={`${sacramento.className} text-[10vw] md:text-[5vw]  z-10 font-extrabold`}
+              >
+                Hello! I&apos;m
+              </h1>
+              <h1
+                data-scroll
+                data-scroll-speed="0.7"
+                className=" text-[10vw] md:text-[5vw] z-10 font-extrabold"
+              >
+                SHEFEENA E S
+              </h1>
+              <h2
+                data-scroll
+                data-scroll-speed="0.7"
+                className=" font-bold tracking-[clamp(0.6rem,0.75vh,1.3rem)] text-sm sm:text-base md:text-lg mt-2"
+              >
+                FRONT END DEVELOPER
+              </h2>
             </div>
           </div>
         </div>

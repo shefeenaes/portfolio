@@ -23,7 +23,7 @@ const FeatureCard = () => {
     return (
       <MagicCard
         key={index}
-        gradientColor={effectiveTheme === "dark" ? "#334155" : "#e0e7ff"}
+        gradientColor={effectiveTheme === "dark" ? "#334155" : "#8e96b3"}
       >
         <div className="rounded-lg p-4 sm:p-5 w-[85vw] sm:w-[280px] md:w-[300px] lg:w-[320px] xl:w-[350px]">
           <div className="mx-auto mt-6 sm:mt-8 flex h-40 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full">
@@ -56,7 +56,7 @@ const FeatureCard = () => {
           <h3 className="mt-6 sm:mt-8 text-base sm:text-lg font-semibold text-center">
             {item.title}
           </h3>
-          <p className="mt-3 text-sm sm:text-sm text-center">
+          <p className="mt-3 md:text-sm text-xs  text-center">
             {item.description}
           </p>
         </div>

@@ -3,6 +3,7 @@ import "./globals.css";
 import { Providers } from "./themeProvider";
 import metaData from "./data/metadata.json";
 import { Sacramento, Montserrat } from "next/font/google";
+
 const sacramento = Sacramento({
   subsets: ["latin"],
   weight: "400",
@@ -41,14 +42,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      {/* <head>
-      <link
-          rel="stylesheet"
-          href="https://unpkg.com/locomotive-scroll@latest/dist/locomotive-scroll.css"
-        />
-      </head> */}
-      <body className={`${montserrat.className} antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <head></head>
+      <body
+        className={`${montserrat.className} antialiased`}
+        suppressHydrationWarning
+      >
         {/* Ambient glow effects - matches Home.jsx */}
         <div className="fixed top-1/3 left-1/4 w-64 h-64 rounded-full bg-purple-500 opacity-10 blur-3xl"></div>
         <div className="fixed bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-orange-500 opacity-10 blur-3xl"></div>

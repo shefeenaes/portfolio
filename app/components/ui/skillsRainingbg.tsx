@@ -38,18 +38,23 @@ const generateDoodles = (count: number): DoodleData[] => {
   });
 };
 
-const BackgroundForHero: React.FC = () => {
-  const [positions, setPositions] = useState<DoodleData[]>(() =>
-    generateDoodles(50)
-  );
+const RainingSkills: React.FC = () => {
+  const [positions, setPositions] = useState<DoodleData[] | null>(null);
   const requestRef = useRef<number | null>(null);
   useEffect(() => {
+    // Generate positions only after component mounts
+    setPositions(generateDoodles(50));
+  }, []);
+
+  useEffect(() => {
+    if (!positions) return;
+
     const animate = () => {
       setPositions((prev) =>
-        prev.map((d) => {
+        prev!.map((d) => {
           let newY = d.y + d.speed;
           if (newY > 100) {
-            newY = Math.random() * -10; // reset above screen
+            newY = Math.random() * -10;
             return { ...d, y: newY, x: Math.random() * 100 };
           }
           return { ...d, y: newY };
@@ -60,12 +65,11 @@ const BackgroundForHero: React.FC = () => {
 
     requestRef.current = requestAnimationFrame(animate);
     return () => {
-      if (requestRef.current !== null) {
-        cancelAnimationFrame(requestRef.current);
-      }
+      if (requestRef.current !== null) cancelAnimationFrame(requestRef.current);
     };
-  }, []);
+  }, [positions]);
 
+  if (positions === null) return null;
   return (
     <div
       className="absolute inset-0 w-full h-full z-[-1] pointer-events-none opacity-20"
@@ -186,4 +190,4 @@ const BackgroundForHero: React.FC = () => {
   );
 };
 
-export default BackgroundForHero;
+export default RainingSkills;

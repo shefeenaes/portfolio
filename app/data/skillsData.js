@@ -39,7 +39,7 @@ export const skills = [
   {
     title: "TailwindCSS ",
     description:
-      "TailwindCSS is a utility-first CSS framework. It's fast and flexible with zero-runtime.",
+      "TailwindCSS is a utility-first CSS framework. It's fast & flexible",
     imageLink:
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
   },

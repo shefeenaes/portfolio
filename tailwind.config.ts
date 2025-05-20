@@ -10,9 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        backgroundPrimary: "#111111", // Soft black
-        backgroundSecondary: "#333333", // Dark gray
-        textPrimary: "#f5f5f5", // Off-white
+        primary: "#020617", // This is slate-950
+        secondary: "#f8fafc", // This is slate-50
       },
       fontSize: {
         headlineBig: "clamp(3rem, 10vw, 15rem)",
@@ -55,6 +54,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };
 export default config;

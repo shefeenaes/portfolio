@@ -22,11 +22,9 @@ const Skills = () => {
         { x: 0 },
         {
           x: () => {
-            // Calculate exact scroll width to avoid issues on mobile or prod
             const el = sectionRef.current;
             if (!el) return "-300vw";
-            // Total scroll width = scrollWidth - clientWidth
-            const scrollDistance = el.scrollWidth - window.innerWidth;
+            const scrollDistance = el.scrollWidth - window.innerWidth + 500;
             return `-${scrollDistance}px`;
           },
           ease: "none",
@@ -64,7 +62,7 @@ const Skills = () => {
   }, []);
 
   return (
-    <section className="overflow-hidden relative">
+    <section className="overflow-hidden relative mb-20" id="skills">
       <div
         ref={triggerRef}
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative"
@@ -75,7 +73,7 @@ const Skills = () => {
         </div>
 
         {/* Sticky title */}
-        <div className="sticky top-10 z-10">
+        <div className="sticky top-20 z-10">
           <Header title="skills" />
         </div>
 
