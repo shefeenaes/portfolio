@@ -1,9 +1,9 @@
 export const education = [
   {
-    course: "Master of Computer Application",
+    course: "Master of Computer Application (MCA)",
     period: "2018-2021",
     description:
-      "I pursued my Master of Computer Applications (MCA) at Vidya Academy of Science and Technology, Kerala, under APJ Abdul Kalam Technological University (KTU) from 2018 to 2021. This full-time 3-year program deepened my understanding of software engineering and development, and helped me build strong technical skills that shaped my path as a professional developer. I passed with a CGPA of 9.21.",
+      "I pursued my MCA at Vidya Academy of Science and Technology, Kerala, under KTU from 2018 to 2021. This full-time 3-year program deepened my understanding of software engineering and development, and helped me build strong technical skills. I passed with a CGPA of 9.21.",
     collegepic: "vidya.PNG",
     collegeLink: "https://www.vidyaacademy.ac.in/",
     color: "#FCE7F3",
@@ -30,7 +30,7 @@ export const education = [
     course: "10th",
     period: "2013",
     description:
-      "I completed my 10th grade (CBSE) at J&J English Medium School, Karupadanna, Kerala, India, with a CGPA of 9.81, securing first rank in the school. This milestone marked the beginning of my academic journey, instilling discipline, curiosity, and a strong drive to excel in my studies.",
+      "I completed my 10th grade (CBSE) at J&J English Medium School, Karupadanna, Kerala, India, with a CGPA of 9.81, securing first rank in the school. This milestone marked the beginning of my academic journey, instilling discipline, curiosity, and a strong drive to excel in my studies, and it continues to inspire my pursuit of excellence today",
     collegepic: "j&j.PNG",
     collegeLink: "https://www.jandjcbseschool.com/",
     color: "#E0F2FE",

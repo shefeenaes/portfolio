@@ -3,11 +3,9 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Header from "./ui/Header";
-
 import { timeline } from "../data/timeline";
 import Gridbg from "./ui/Grid-bg";
 const Timeline = () => {
-  // For parallax effect on scroll
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -21,7 +19,7 @@ const Timeline = () => {
 
   return (
     <section
-      id="about"
+      id="experience"
       className="min-h-screen flex flex-col items-center justify-center overflow-hidden relative"
     >
       <div className="absolute top-0 left-0 inset-0 h-full w-full brightness-[0.5] z-0">
@@ -29,19 +27,6 @@ const Timeline = () => {
       </div>
 
       <div className="w-full max-w-6xl mt-10 mx-auto px-4 md:px-8 py-16 z-10">
-        {/* Title with animated glow - updated to match Home.jsx text style */}
-        {/* <motion.h1
-          className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#6EE7B7] via-[#3B82F6] to-[#9333EA] mb-12 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{
-            textShadow:
-              "0 0 15px rgba(59, 130, 246, 0.7), 0 0 30px rgba(147, 51, 234, 0.5)",
-          }}
-        >
-          My Career Timeline
-        </motion.h1> */}
         <Header title="experience" />
 
         <div className="relative w-full max-w-4xl mx-auto">
@@ -128,7 +113,7 @@ const Timeline = () => {
                 } w-4/5 md:w-5/12 mt-4 md:mt-0`}
               >
                 <motion.div
-                  className="relative overflow-hidden p-6 rounded-lg bg-white/70 dark:bg-black/60 backdrop-blur-md border border-cyan-400/30 dark:border-cyan-800/50"
+                  className="relative overflow-hidden px-8 md:px-6 py-4 text-center  rounded-lg bg-secondary dark:bg-slate-900  text-black dark:text-white backdrop-blur-md border border-cyan-400/30 dark:border-cyan-800/50"
                   whileHover={{
                     scale: 1.03,
                     boxShadow: "0 0 20px rgba(59, 130, 246, 0.2)",
@@ -142,10 +127,10 @@ const Timeline = () => {
                   <h4 className="text-lg font-semibold text-violet-300 transition-colors duration-300">
                     {event.company}
                   </h4>
-                  <p className="text-sm italic text-blue-300 mb-2">
+                  <p className="text-base md:text-sm italic text-blue-300 mb-2">
                     {event.year}
                   </p>
-                  <p className="">{event.desc}</p>
+                  <p className="text-sm md:text-sm">{event.desc}</p>
 
                   {/* Glitch effect on hover */}
                   <motion.div

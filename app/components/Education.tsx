@@ -13,6 +13,7 @@ type DeviceType = "mobile" | "tablet" | "desktop";
 
 export default function EducationParallax() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const cardsContainerRef = useRef<HTMLDivElement | null>(null);
   const [device, setDevice] = useState<DeviceType>("mobile");
 
   // Detect device type based on window width
@@ -24,35 +25,50 @@ export default function EducationParallax() {
       return "desktop";
     };
 
+    let timeoutId: NodeJS.Timeout;
     const handleResize = () => {
-      setDevice(determineDevice());
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setDevice(determineDevice());
+      }, 100);
     };
 
-    handleResize(); // Initial check
+    handleResize();
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
-
   useLayoutEffect(() => {
-    if (!sectionRef.current) return;
+    if (
+      !sectionRef.current ||
+      !cardsContainerRef.current ||
+      device === "mobile"
+    )
+      return;
+
+    const cards = gsap.utils.toArray<HTMLElement>(".edu-card");
+    const cardHeight = cards[0]?.offsetHeight || 500;
 
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLElement>(".edu-card");
-
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current!,
           start: "top top",
-          end: `+=${cards.length * 500}`,
+          end: () => `+=${cards.length * cardHeight}`,
           scrub: true,
           pin: sectionRef.current!,
+          anticipatePin: 1,
         },
       });
 
-      const yPercent = device === "mobile" ? 100 : -100;
-
       cards.forEach((card, index) => {
-        timeline.to(card, { yPercent }, index === 0 ? 0 : ">");
+        timeline.to(
+          card,
+          { yPercent: -100, duration: 1 },
+          index === 0 ? 0 : ">"
+        );
       });
     }, sectionRef);
 
@@ -62,27 +78,40 @@ export default function EducationParallax() {
   return (
     <section
       ref={sectionRef}
+      id="education"
       className="relative min-h-screen py-20 px-4 sm:px-6 md:px-8 overflow-hidden"
     >
       <div className="flex flex-col md:flex-row gap-12">
         {/* Sticky Left Title */}
-        <div className="md:sticky top-20 md:w-1/3 w-full">
+        <div className="md:sticky top-20 md:w-1/2 w-full">
           <Header title="education" />
         </div>
 
         {/* Right Cards */}
-        <div className="md:w-2/3 w-full relative h-[600px] sm:h-[500px]">
+        <div
+          ref={cardsContainerRef}
+          className={`md:w-1/2 w-full ${
+            device === "mobile"
+              ? "relative h-auto flex flex-col gap-8 "
+              : "relative h-[600px] sm:h-[500px] "
+          }`}
+        >
           {education.map((item, index) => (
             <a
               key={item.course}
               href={item.collegeLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="edu-card absolute w-full h-[500px] sm:h-[420px] rounded-2xl text-black p-6 shadow-xl"
+              className={`edu-card p-4 rounded-2xl shadow-xl  bg-secondary dark:bg-slate-900  text-gray-700 dark:text-white backdrop-blur-md border border-cyan-400/30 dark:border-cyan-800/50 ${
+                device === "mobile" ? "relative " : "absolute"
+              }  `}
               style={{
-                backgroundColor: item.color,
-                top: `${index * 60}px`,
-                zIndex: education.length - index,
+                ...(device !== "mobile"
+                  ? {
+                      top: `${index * 60}px`,
+                      zIndex: education.length - index,
+                    }
+                  : {}),
               }}
               aria-label={`Open details about ${item.course} at ${item.course}`}
             >

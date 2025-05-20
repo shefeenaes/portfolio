@@ -26,7 +26,7 @@ const Header: React.FC<TitleProps> = ({ title }) => {
       desc: "I've been doing web development for about 3 years now, and I'm always eager to learn more in this fast-paced industry.",
     },
     education: {
-      code: 'import { Knowledge } from  "life ";',
+      code: "My Academic Git History",
       desc: "Each of these institutions played a key role in shaping my journey into the world of technology and software development.",
     },
     contact: {
@@ -45,14 +45,14 @@ const Header: React.FC<TitleProps> = ({ title }) => {
   };
 
   return (
-    <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center mt-5">
+    <div className="mx-auto text-center mt-5">
       <h2
-        className={`${sacramento.className} text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 via-violet-500 to-sky-500`}
+        className={`${sacramento.className} text-3xl sm:text-6xl md:text-5xl  font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 via-violet-500 to-sky-500`}
       >
         {current.code}
       </h2>
       <p
-        className={`${montserrat.className} mt-4 text-sm sm:text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300`}
+        className={`${montserrat.className} my-4 text-sm sm:text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300`}
       >
         {current.desc}
       </p>

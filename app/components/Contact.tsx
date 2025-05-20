@@ -5,6 +5,7 @@ import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
+import { FaLocationArrow } from "react-icons/fa";
 import { contact } from "../data/contact";
 import {
   MailIcon,
@@ -16,6 +17,7 @@ import {
   SendIcon,
 } from "lucide-react";
 import Header from "./ui/Header";
+import MagicButton from "./ui/MagicButton";
 
 const Contact: React.FC = () => {
   const [fullName, setFullName] = useState<string>("");
@@ -104,10 +106,12 @@ const Contact: React.FC = () => {
     };
 
   return (
-    <section className="min-h-screen py-10 px-4 flex flex-col items-center ">
-      {/* <section className="min-h-screen py-10 px-4 flex flex-col items-center bg-gray-50 dark:bg-gray-900"></section> */}
+    <section
+      className="min-h-screen py-10 px-4 flex flex-col items-center "
+      id="contact"
+    >
       <ToastContainer />
-      {/* <h1 className="text-4xl font-bold mb-10 text-center">Contact Me</h1> */}
+
       <Header title="contact" />
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Contact Info */}
@@ -125,9 +129,11 @@ const Contact: React.FC = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h3 className="text-2xl font-semibold mb-8">Contact Information</h3>
+            <h3 className="text-2xl font-semibold mb-8 ">
+              Contact Information
+            </h3>
 
-            <div className="space-y-6">
+            <div className="space-y-6 ">
               <motion.div
                 className="flex items-start space-x-4"
                 variants={itemVariants}
@@ -180,16 +186,19 @@ const Contact: React.FC = () => {
               </motion.div>
             </div>
 
-            <motion.div className="mt-12" variants={itemVariants}>
+            <motion.div
+              className="mt-12 flex flex-col items-center justify-center"
+              variants={itemVariants}
+            >
               <h4 className="font-medium text-lg mb-3">Connect with me</h4>
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 ">
                 {contact.social.map((platform, index) => (
                   <motion.a
                     key={index}
                     href={platform.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-md text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light hover:shadow-lg transition-all duration-300"
+                    className="bg-white dark:bg-primary p-3 rounded-lg shadow-md text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-400 hover:shadow-lg transition-all duration-300"
                     whileHover={{ y: -5 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -207,9 +216,9 @@ const Contact: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg"
+          className="p-8 rounded-2xl shadow-xl  bg-secondary dark:bg-slate-900  text-black dark:text-white backdrop-blur-md border border-cyan-400/30 dark:border-cyan-800/50"
         >
-          <form ref={formRef} onSubmit={handleSendEmail} className="space-y-6">
+          <form ref={formRef} onSubmit={handleSendEmail} className="space-y-6 ">
             {/* Full Name */}
             <div>
               <label className="flex items-center text-sm font-medium mb-1 text-gray-700 dark:text-gray-200">
@@ -223,7 +232,7 @@ const Contact: React.FC = () => {
                 value={fullName}
                 onChange={handleInputChange(setFullName)}
                 placeholder="John Doe"
-                className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-transparent text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border border-gray-400 dark:border-gray-600 rounded-md bg-transparent text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
@@ -240,7 +249,7 @@ const Contact: React.FC = () => {
                 value={email}
                 onChange={handleInputChange(setEmail)}
                 placeholder="your@email.com"
-                className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-transparent text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border border-gray-400 dark:border-gray-600 rounded-md bg-transparent text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
@@ -257,27 +266,31 @@ const Contact: React.FC = () => {
                 value={message}
                 onChange={handleInputChange(setMessage)}
                 placeholder="Type your message here..."
-                className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-transparent text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border border-gray-400 dark:border-gray-600 rounded-md bg-transparent text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <input type="hidden" name="date" />
 
             {/* Submit Button */}
+
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-blue-600 text-white py-3 rounded-md flex items-center justify-center gap-2 hover:bg-blue-700 transition-all font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full py-3 flex items-center justify-center gap-2 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              <SendIcon className="w-5 h-5 mr-2" />
-              {loading ? (
-                <>
-                  <LoaderCircle className="w-5 h-5 animate-spin" />
-                  Sending...
-                </>
-              ) : (
-                "Send Email"
-              )}
+              <MagicButton
+                title={
+                  loading ? (
+                    <>
+                      <LoaderCircle className="w-5 h-5 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    "Send Email"
+                  )
+                }
+              />
             </button>
           </form>
         </motion.div>
