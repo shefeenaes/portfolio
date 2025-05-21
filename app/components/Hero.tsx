@@ -5,17 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 import { useTheme } from "next-themes";
-import { Sacramento, Montserrat } from "next/font/google";
 import { SparklesCore } from "./ui/Sparkles";
-import { MdOutlineLightMode } from "react-icons/md";
-import { MdDarkMode } from "react-icons/md";
+import { Sacramento } from "next/font/google";
+
 const sacramento = Sacramento({
   subsets: ["latin"],
   weight: "400",
-});
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
 });
 export default function Intro() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -84,16 +79,14 @@ export default function Intro() {
         data-scroll-offset="0,100%"
         data-scroll-event-progress="progressEvent"
       >
-        {mounted && (
-          <>
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 shadow-2xl border rounded-full"
-            >
-              {theme === "dark" ? <MdDarkMode /> : <MdOutlineLightMode />}{" "}
-            </button>
-          </>
-        )}
+        {/* {mounted && (
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="p-2 rounded border"
+          >
+            Toggle {theme === "dark" ? "Light" : "Dark"} Mode
+          </button>
+        )} */}
         <div className="relative w-full">
           <div
             className="absolute top-0 left-0 inset-0 h-full w-full brightness-[0.5]"

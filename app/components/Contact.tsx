@@ -138,14 +138,14 @@ const Contact: React.FC = () => {
                 className="flex items-start space-x-4"
                 variants={itemVariants}
               >
-                <div className="bg-primary/10 dark:bg-primary/20 p-3 rounded-lg text-primary dark:text-primary-light">
+                <div className="bg-primary/10 dark:bg-primary/20 p-3 rounded-lg text-primary dark:text-secondary">
                   <MailIcon className="w-6 h-6" />
                 </div>
                 <div className="flex-1">
                   <h4 className="font-medium text-lg mb-1">Email</h4>
                   <a
                     href={`mailto:${contact.email}`}
-                    className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors"
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-secondary transition-colors"
                   >
                     {"shefeena.e.s@gmail.com"}
                   </a>
@@ -156,14 +156,14 @@ const Contact: React.FC = () => {
                 className="flex items-start space-x-4"
                 variants={itemVariants}
               >
-                <div className="bg-primary/10 dark:bg-primary/20 p-3 rounded-lg text-primary dark:text-primary-light">
+                <div className="bg-primary/10 dark:bg-primary/20 p-3 rounded-lg text-primary dark:text-secondary">
                   <PhoneIcon className="w-6 h-6" />
                 </div>
                 <div className="flex-1">
                   <h4 className="font-medium text-lg mb-1">Phone</h4>
                   <a
                     href={"#"}
-                    className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors"
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-secondary transition-colors"
                   >
                     {`tel: +971 506338702`}
                   </a>
@@ -174,7 +174,7 @@ const Contact: React.FC = () => {
                 className="flex items-start space-x-4"
                 variants={itemVariants}
               >
-                <div className="bg-primary/10 dark:bg-primary/20 p-3 rounded-lg text-primary dark:text-primary-light">
+                <div className="bg-primary/10 dark:bg-primary/20 p-3 rounded-lg text-primary dark:text-secondary">
                   <MapPinIcon className="w-6 h-6" />
                 </div>
                 <div className="flex-1">
@@ -239,7 +239,7 @@ const Contact: React.FC = () => {
             {/* Email */}
             <div>
               <label className="flex items-center text-sm font-medium mb-1 text-gray-700 dark:text-gray-200">
-                <MailIcon className="w-4 h-4 mr-2" />
+                <MailIcon className="w-4 h-4 mr-2 " />
                 Email
               </label>
               <input
@@ -273,12 +273,8 @@ const Contact: React.FC = () => {
             <input type="hidden" name="date" />
 
             {/* Submit Button */}
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full py-3 flex items-center justify-center gap-2 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
-            >
+            <div className="flex justify-center">
+              {" "}
               <MagicButton
                 title={
                   loading ? (
@@ -291,7 +287,7 @@ const Contact: React.FC = () => {
                   )
                 }
               />
-            </button>
+            </div>
           </form>
         </motion.div>
       </div>
