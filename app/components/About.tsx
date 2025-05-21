@@ -76,16 +76,17 @@ const About = () => {
                 ref={h3Ref}
                 className="text-base md:text-2xl font-semibold tracking-wide text-shadow-sm transition-colors duration-300"
               >
-                I am a full-stack web developer with a passion for creating
-                interactive and responsive web applications.
+                Hi! I&apos;m a frontend developer who loves crafting clean,
+                interactive, and accessible user experiences.
                 <br />
-                I have experience working with JavaScript, React, Redux,
-                Node.js, Express, PostgreSQL, HTML, CSS, and Git.
+                I bring ideas to life using React, Next.js, Tailwind, and a
+                sprinkle of GSAP or Framer Motion for that extra flair.
                 <br />
-                I am a quick learner and always looking to expand my knowledge
-                and skill set.
-                <br />I am a team player and am excited to work with others to
-                create amazing applications.
+                I&apos;m always experimenting, learning, and optimizing —
+                because great UI is never finished.
+                <br />
+                Whether it&apos;s pixels, performance, or pushing boundaries, I
+                enjoy turning designs into delightful digital experiences.
               </h3>
             </div>
           </motion.div>
