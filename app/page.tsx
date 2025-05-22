@@ -7,6 +7,7 @@ import EducationParallax from "./components/Education";
 import ResumeSection from "./components/Resume";
 import { FloatingNav } from "./components/ui/FloatingNav";
 import { navItems } from "./data/navdata";
+import Projects from "./components/Projects";
 export default function Home() {
   return (
     <>
@@ -14,6 +15,7 @@ export default function Home() {
       <Intro />
       <About />
       <Skills />
+      <Projects />
       <Timeline />
       <EducationParallax />
       <ResumeSection />

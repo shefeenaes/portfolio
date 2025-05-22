@@ -37,6 +37,10 @@ const Header: React.FC<TitleProps> = ({ title }) => {
       code: "<SkillSet />",
       desc: "These are my working Skills & Services I have done.",
     },
+    projects: {
+      code: "What I've Done",
+      desc: "(more coming soon)",
+    },
   };
 
   const current = titleMap[title.toLowerCase()] || {
