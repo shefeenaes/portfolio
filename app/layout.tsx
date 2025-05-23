@@ -4,6 +4,8 @@ import "./globals.css";
 import { Providers } from "./themeProvider";
 import metaData from "./data/metadata.json";
 import "keen-slider/keen-slider.min.css";
+import GTMHead from "./lib/GTMHead";
+import GTMNoScript from "./lib/GTMNoScript";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -46,15 +48,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <head>
-      <link
-          rel="stylesheet"
-          href="https://unpkg.com/locomotive-scroll@latest/dist/locomotive-scroll.css"
-        />
-      </head> */}
+      <head>
+        <GTMHead />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <GTMNoScript />
         <Providers>{children}</Providers>
       </body>
     </html>
